@@ -6,19 +6,19 @@ import os
 def read_json_file(file):
     """Read and return the contents of the JSON file."""
     if os.path.exists(file):
-        with open(file, "r") as json_file:
+        with open(file, "r", encoding="utf-8") as json_file:
             try:
                 data = json.load(json_file)
                 if isinstance(data, list):
                     return data
-            except Exception as e:
+            except json.JSONDecodeError as e:
                 print(f"Error: JSON file corrupted of empty: {e}.\nReturning empty list.")
     return []
 
 
 def create_json_file(users, json_file):
     """Writes the JSON file."""
-    with open(json_file, "w") as file:
+    with open(json_file, "w", encoding="utf-8") as file:
         print(f"writing to a file: {file}")
         json.dump(users, file, indent=4)
 
@@ -65,6 +65,6 @@ def list_users(json_file):
 
 def clear_json_file(json_file):
     """Clears the JSON file, leaving it empty."""
-    with open(json_file, "w") as json_file:
-        json.dump([], json_file, indent=4)
+    with open(json_file, "w", encoding="utf-8") as file:
+        json.dump([], file, indent=4)
     print("Json file cleared")

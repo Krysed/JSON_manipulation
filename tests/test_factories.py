@@ -1,10 +1,6 @@
-import os
-import sys
+"""Test module for testing factories.py"""
 from faker import Faker
-
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "source")))
-
-from factories import create_fake_user
+from source.factories import create_fake_user
 
 
 fake = Faker()
