@@ -5,5 +5,3 @@ if __name__ == "__main__":
 
     instance = app.App()
     instance.start_app()
-
-    exit()
